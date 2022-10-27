@@ -18,8 +18,8 @@ const App = () => {
   const dispatch = useDispatch();
 
   const addNewContact = (name, number) => {
+    
     const nameNormalized = name.toLowerCase();
-
     if (
       contacts.find(contact => contact.name.toLowerCase() === nameNormalized)
     ) {
