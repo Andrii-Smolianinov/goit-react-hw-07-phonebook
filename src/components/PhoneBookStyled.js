@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const PhoneBookStyled = styled.div`
-  margin: 40px;
-  padding: 30px;
+  margin: 0px;
+  padding: 15px;
   display: inline-block;
   font-weight: 500;
   font-size: 16px;
@@ -10,8 +10,16 @@ export const PhoneBookStyled = styled.div`
   border: 1px solid black;
   background-color: #b1c5f1;
 
-  & main {
-    text-align: end; 
+  @media screen and (min-width: 480px) {
+    padding: 20px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
+
+  @media screen and(min-width:1200px) {
+    padding: 40px;
   }
 
   & h1 {

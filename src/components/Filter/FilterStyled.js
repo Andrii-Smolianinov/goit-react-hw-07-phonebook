@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContactDiv = styled.div`
+export const FilteredContacts = styled.div`
   & label {
     margin-bottom: 15px;
     display: block;
