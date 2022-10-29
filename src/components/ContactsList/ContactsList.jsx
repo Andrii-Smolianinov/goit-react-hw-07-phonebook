@@ -1,21 +1,27 @@
-import PropTypes from 'prop-types';
+
+import {  useSelector, useDispatch } from 'react-redux';
+import { removeContact } from 'redux/operations';
+import { getFilteredContacts } from "redux/contacts/contactsSelectors";
 import { ContactUl } from 'components/ContactsList/ContactListStyled';
-import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/contactsSlice';
 import { BsTelephoneOutbound } from 'react-icons/bs';
-const ContactList = ({ contacts, filter }) => {
+
+
+const ContactList = () => {
+  const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
-  const onDeleteItem = id => dispatch(removeContact(id));
+
+  const onRemoveContact = (id) => {
+  const action = removeContact(id);
+  dispatch(action);
+}
 
   return (
     <ContactUl>
-      {contacts
-        .filter(contact => contact.name.toLowerCase().includes(filter))
-        .map(contact => (
+      {contacts.map(contact => (
           <li key={contact.id}>
             <BsTelephoneOutbound size={13} />
             {contact.name}: {contact.number}
-            <button onClick={() => onDeleteItem(contact.id)}>Delete</button>
+            <button onClick={() => onRemoveContact(contact.id)}>Delete</button>
           </li>
         ))}
     </ContactUl>
@@ -24,7 +30,4 @@ const ContactList = ({ contacts, filter }) => {
 
 export { ContactList };
 
-ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  filter: PropTypes.string.isRequired,
-};
+

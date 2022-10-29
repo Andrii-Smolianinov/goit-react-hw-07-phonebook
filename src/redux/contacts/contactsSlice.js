@@ -7,7 +7,6 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  filter: '',
 };
 
 const contactsSlice = createSlice({
@@ -62,5 +61,4 @@ export const contactsReducer = persistReducer(
 );
 
 
-export const getContacts = state => state.contacts.items;
-export const getFilter = state => state.contacts.filter;
+

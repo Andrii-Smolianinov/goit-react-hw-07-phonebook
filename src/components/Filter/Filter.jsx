@@ -1,9 +1,15 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filter/filterSlice';
+import { getFilter } from 'redux/filter/filterSelectors';
 import { ContactDiv } from 'components/Filter/FilterStyled';
 
-const Filter = ({ value, onChange }) => {
-  const handleInputChange = name => event => {
-    onChange && onChange(event.target.value.trim());
+const Filter = () => {
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  const handelChange = event => {
+    const { value } = event.target;
+    dispatch(setFilter(value));
   };
 
   return (
@@ -13,8 +19,8 @@ const Filter = ({ value, onChange }) => {
         type="text"
         name="filter"
         id="filter"
-        value={value}
-        onChange={handleInputChange('filter')}
+        value={filter}
+        onChange={handelChange}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
@@ -24,8 +30,3 @@ const Filter = ({ value, onChange }) => {
 };
 
 export { Filter };
-
-Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-};

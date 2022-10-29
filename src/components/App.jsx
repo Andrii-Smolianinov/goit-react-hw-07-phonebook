@@ -1,34 +1,20 @@
-import { nanoid } from 'nanoid';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { PhoneBookStyled } from 'components/PhoneBookStyled';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactsList/ContactsList';
-import {
-  addContact,
-  setFilter,
-  getContacts,
-  getFilter,
-} from 'redux/contactsSlice';
+import { getFilteredContacts, getState } from 'redux/contacts/contactsSelectors';
+import { fetchContacts } from 'redux/operations';
 
 const App = () => {
-  const filter = useSelector(getFilter);
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(getFilteredContacts);
+  const { loading, error } = useSelector(getState);
   const dispatch = useDispatch();
 
-  const addNewContact = (name, number) => {
-    
-    const nameNormalized = name.toLowerCase();
-    if (
-      contacts.find(contact => contact.name.toLowerCase() === nameNormalized)
-    ) {
-      Notify.warning(`${name} ${number} is already in the phone book!`);
-    } else {
-      const id = nanoid();
-      dispatch(addContact({ id, name, number }));
-    }
-  };
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <PhoneBookStyled>
@@ -36,18 +22,17 @@ const App = () => {
         <h1>
           <span className="spanP">P</span>honebook
         </h1>
-        <ContactForm onSubmit={addNewContact} />
+        <ContactForm />
       </main>
-      {contacts.length > 0 && (
+      {!loading && contacts.length > 0 && (
         <>
           <h2>Contacts</h2>
-          <Filter value={filter} onChange={e => dispatch(setFilter(e))} />
-          <ContactList contacts={contacts} filter={filter.toLowerCase()} />
+          <Filter />
+          <ContactList contacts={contacts} />
         </>
       )}
-      
+      {error && <p>oops, something went wrong</p>}
     </PhoneBookStyled>
-    
   );
 };
 
