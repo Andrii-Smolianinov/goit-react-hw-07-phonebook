@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FilteredContacts = styled.div`
   & label {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: block;
   }
   & input {

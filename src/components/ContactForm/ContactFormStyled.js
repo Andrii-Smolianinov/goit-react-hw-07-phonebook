@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MainFormDiv = styled.div`
   text-align: end;
+  
 `;
 
 export const Form = styled.form`
@@ -17,15 +18,21 @@ export const Form = styled.form`
     @media screen and (min-width: 480px) {
       font-size: 16px;
     }
+    
   }
 
   & input {
     margin: 0 0 5px 5px;
     border: 2px solid #3b5998;
+    padding-left: 10px;
     width: 120px;
     border-radius: 4px;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
+
+    @media screen and (min-width: 349px) {
+      width: 143px;
+    }
 
     @media screen and (min-width: 480px) {
       margin: 0 0 10px 10px;
@@ -33,7 +40,7 @@ export const Form = styled.form`
     }
 
     @media screen and (min-width: 768px) {
-      margin: 0 0 10px 25px;
+      width: 220px;    
     }
   }
 
@@ -42,9 +49,9 @@ export const Form = styled.form`
   }
 
   & button {
-    width: fit-content;
     padding: 5px 8px;
-    margin: 20px 0 40px 0;
+    margin: 20px 0 20px 0;
+    width: 128px;
     font-weight: 600;
     color: #b1c5f1;
     border-radius: 3px;

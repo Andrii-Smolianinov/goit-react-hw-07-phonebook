@@ -7,42 +7,41 @@ export const ContactUl = styled.ul`
   background-color: #b1c5f1;
   list-style: none;
   svg {
-    margin: 0 5px;
+    margin: 5px;
   }
 
-  & li {
+  li {
     display: block;
-    position: relative;
-    height: 25px;
-
-    padding: 5px 75px 0 0;
+    height: 22px;
+    padding: 1px 5px;
     margin: 10px 0;
-
-    text-align: left;
+    display: grid;
+    grid-template-columns: 25px 1fr 52px;
     font-size: 12px;
     background-color: #b1c5f1;
     border: 2px solid #3b5998;
     border-radius: 3px;
-    align-content: center;
     align-items: center;
     cursor: pointer;
-    transition: scale 250ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: scale 250ms, color 250ms,
+      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media screen and (min-width: 480px) {
       font-size: 16px;
       border-radius: 5px;
-    }    
+      padding: 5px 15px;
+    }
   }
-  & li:hover {
+
+  li:hover {
     scale: 1.03;
-    box-shadow: rgba(4, 241, 229, 1) 0px 3px 14px,
-    rgba(11, 31, 1, 1) 0px 7px 14px;
+    color: rgba(8, 4, 241, 1);
+    border-color: rgba(8, 4, 241, 1);
+    box-shadow: rgba(132, 188, 202, 1) 0px 7px 14px;
   }
 
   button {
-    position: absolute;
-    right: 10px;
-    top: 6px;
+      
     font-weight: 600;
     color: #b1c5f1;
     background-color: #3b5998;

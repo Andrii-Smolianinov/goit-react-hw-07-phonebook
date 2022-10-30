@@ -2,13 +2,18 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 
-import { getFilteredContacts } from 'redux/contacts/contactsSelectors';
+import {
+  getFilteredContacts,
+  getLoadingStatus,
+} from 'redux/contacts/contactsSelectors';
 import { Form, MainFormDiv } from 'components/ContactForm/ContactFormStyled';
+import { LoaderButton } from 'components/ContactForm/LoaderBtn/LoaderBtn';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getFilteredContacts);
+  const isLoading = useSelector(getLoadingStatus);
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -21,7 +26,7 @@ const ContactForm = () => {
   const onAddContact = contact => {
     if (isDublicate(contact)) {
       return Notify.warning(
-        `warning! Contact "${contact.name}" is already in the phone book!`
+        `Contact "${contact.name}" is already in the phone book!`
       );
     }
     const action = addContact(contact);
@@ -42,14 +47,14 @@ const ContactForm = () => {
       </h1>
       <Form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="nameInput">Name</label>
+          <label htmlFor="nameInput">Name </label>
           <input
             type="text"
             name="name"
             id="nameInput"
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder=" john doe"
+            placeholder="mark twain"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
@@ -69,7 +74,12 @@ const ContactForm = () => {
             required
           />
         </div>
-        <button type="submit">Add contact</button>
+        {isLoading && (
+          <button type="submit">
+            <LoaderButton />
+          </button>
+        )}
+        {!isLoading && <button type="submit">Add contact</button>}
       </Form>
     </MainFormDiv>
   );

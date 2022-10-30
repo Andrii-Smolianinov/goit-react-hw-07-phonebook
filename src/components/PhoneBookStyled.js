@@ -1,26 +1,32 @@
 import styled from 'styled-components';
 
 export const PhoneBookStyled = styled.div`
-  margin: 0px;
+  width: 70%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 15px;
   display: inline-block;
   font-weight: 500;
   font-size: 16px;
   color: #3b5998;
-  border: 1px solid black;
   background-color: #b1c5f1;
 
   @media screen and (min-width: 480px) {
-    padding: 20px;
-  }
-  
-  @media screen and (min-width: 768px) {
     padding: 30px;
+    width: 50%;
+    height: 85%;
   }
 
-  @media screen and(min-width:1200px) {
-    padding: 40px;
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+   width: 30vw;
   }
+  @media screen and (min-width: 950px) {
+    
+   width: 18vw;
+  }
+ 
 
   & h1 {
     margin-top: 0px;
