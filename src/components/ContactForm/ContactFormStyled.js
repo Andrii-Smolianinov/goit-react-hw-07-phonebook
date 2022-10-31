@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
 export const MainFormDiv = styled.div`
-  text-align: end;
-  
+
+  text-align: start;
+
+  @media screen and (min-width: 768px) {
+    text-align: end;
+    
+  }
 `;
 
 export const Form = styled.form`
@@ -10,6 +15,10 @@ export const Form = styled.form`
   display: inline-flex;
   flex-direction: column;
   color: #3b5998;
+  
+  @media screen and (min-width: 768px) {
+    padding-right: 55px;
+    }
 
   & label {
     margin-bottom: 15px;
@@ -18,30 +27,19 @@ export const Form = styled.form`
     @media screen and (min-width: 480px) {
       font-size: 16px;
     }
-    
   }
 
   & input {
-    margin: 0 0 5px 5px;
+    margin-bottom: 5px;
     border: 2px solid #3b5998;
     padding-left: 10px;
-    width: 120px;
     border-radius: 4px;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
 
-    @media screen and (min-width: 349px) {
-      width: 143px;
-    }
-
-    @media screen and (min-width: 480px) {
-      margin: 0 0 10px 10px;
-      width: 160px;
-    }
-
     @media screen and (min-width: 768px) {
-      width: 220px;    
-    }
+    margin: 0 0 5px 5px;
+  }
   }
 
   & input:focus {
