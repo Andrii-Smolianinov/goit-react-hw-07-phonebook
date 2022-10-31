@@ -5,13 +5,13 @@ export const Container = styled.div`
   margin: auto;
   width: 300px;
   @media screen and (min-width: 480px) {
-    padding: 30px;
-    width: 350px;
+    padding: 25px;
+    width: 310px;
   }
 
   @media screen and (min-width: 768px) {
     padding: 50px;
-    width: 380px;
+    width: 330px;
   }
 
   @media screen and(min-width:1200px) {

@@ -1,32 +1,19 @@
 import styled from 'styled-components';
 
 export const PhoneBookStyled = styled.div`
-  width: 70%;
-  height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 15px;
-  display: inline-block;
   font-weight: 500;
   font-size: 16px;
   color: #3b5998;
   background-color: #b1c5f1;
-
   @media screen and (min-width: 480px) {
-    padding: 30px;
-    width: 50%;
-    height: 85%;
+    padding: 25px;
   }
-
   @media screen and (min-width: 768px) {
-    padding: 30px;
-   width: 30vw;
+    padding: 35px;
   }
-  @media screen and (min-width: 950px) {
-    
-   width: 18vw;
-  }
- 
 
   & h1 {
     margin-top: 0px;
