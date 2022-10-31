@@ -12,7 +12,7 @@ export const PhoneBookStyled = styled.div`
     padding: 25px;
   }
   @media screen and (min-width: 768px) {
-    padding: 35px;
+    padding: 30px;
   }
 
   & h1 {

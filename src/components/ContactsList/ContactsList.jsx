@@ -20,7 +20,8 @@ const ContactList = () => {
       {contacts.map(contact => (
           <li key={contact.id}>
             <BsTelephoneOutbound size={13} />
-            {contact.name}: {contact.number}
+            {contact.name}:<br/> 
+            {contact.number}
             <button onClick={() => onRemoveContact(contact.id)}>Delete</button>
           </li>
         ))}

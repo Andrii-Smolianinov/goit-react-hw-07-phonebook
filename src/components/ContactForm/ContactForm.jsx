@@ -79,7 +79,7 @@ const ContactForm = () => {
             <LoaderButton />
           </button>
         )}
-        {!isLoading && <button type="submit">Add contact</button>}
+        {!isLoading && <button type="submit">Add new contact</button>}
       </Form>
     </MainFormDiv>
   );
